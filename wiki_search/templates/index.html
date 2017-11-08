@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wiki_search</title>
+    <style type="text/css">
+        h1{
+            text-align:center;
+        }
+		body{
+			padding: 0;
+			margin: 0;
+			background-image: url("http://seopic.699pic.com/photo/00034/8551.jpg_wh1200.jpg");
+			background-size: contain;
+		}
+		img{
+			width: 20%;
+			margin: 160px 40% 0 40%;
+		}
+		.search{
+			width: 60%;
+			height: 36px;
+			border-radius: 2px;
+			margin: 0 20% 0 20%;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-color:#5ca941;
+		}
+		.Submit{
+			width: 6%;
+			margin: 50px 47%;
+			height: 50px;
+			border-radius: 1px;
+			background-image: linear-gradient(#8add6d, #60b044);
+			border-color: #5ca941;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+		}
+		.Submit:hover{
+			opacity: 0.5;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+    <form action="/wiki/search/" method="get">
+        {% csrf_token %}
+    <h1>Hello Users<br>Welcome to this page<br>Here are something you can find</h1>
+    <img src="http://seopic.699pic.com/photo/50057/7473.jpg_wh1200.jpg">
+    <input type="text" class="search"  placeholder="please input you want to find" name="q">
+    <button type="submit" class="Submit">搜索</button>
+    </form>
+    <h1>wiki list</h1>
+    {% for name in names %}
+        <h1>{{name.id}}&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp{{name.title}}&nbsp&nbsp&nbsp{{ name.content }}</h1>
+        <br>
+    {% endfor %}
+
+    {% if error_msg %}
+        <h1>{{ error_msg }}</h1>
+    {% endif %}
+
+    {% for q in post_list %}
+        <h1>
+            在这里显示内容的相应信息<br>{{q.id}}&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp{{q.title}}&nbsp&nbsp&nbsp{{ q.content }}
+        </h1>
+        {% empty %}
+    {% endfor %}
+
+</body>
+</html>
