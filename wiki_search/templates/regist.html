@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Regist</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -36,6 +34,7 @@
 <body>
 <h1>注册页面</h1>
 <form method = 'post' enctype="multipart/form-data">
+     {% csrf_token %}
 {{userform.as_p}}
 <input type="submit" value = "Regist" />
 </form>
