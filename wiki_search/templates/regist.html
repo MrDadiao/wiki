@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Regist</title>
 
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -28,12 +27,16 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+<script>
+setTimeout("javascript:location.href= 'index.html'", 1000);
+</script>
 <style>
         html,body{text-align:center;margin:0px auto;}
 </style>
+
 <body>
 <h1>注册页面</h1>
-<form method = 'post' enctype="multipart/form-data">
+<form method = 'post' enctype="multipart/form-data" >
      {% csrf_token %}
 {{userform.as_p}}
 <input type="submit" value = "Regist" />
