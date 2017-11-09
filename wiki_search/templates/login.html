@@ -34,7 +34,7 @@
 </style>
 <body>
 <h1>登录页面</h1>
-<form method = 'post' enctype="multipart/form-data">
+<form method = 'post' enctype="multipart/form-data" action="index.html">
      {% csrf_token %}
 {{userform.as_p}}
 <input type="submit" value = "Login" />

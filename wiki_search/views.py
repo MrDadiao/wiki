@@ -36,13 +36,14 @@ def regist(request):
             password = userform.cleaned_data['password']
             email = userform.cleaned_data['email']
 
-            User.objects.create(username=username,password=password,email=email)
-            User.save()
-
+            User.objects.create(username=username, password=password, email=email)
+            
+            
             return HttpResponse('regist success!!!')
+            
     else:
         userform = UserForm()
-    return render_to_response('regist.html',{'userform':userform})
+    return render_to_response('regist.html', {'userform':userform})
 
 def login(request):
     if request.method == 'POST':
@@ -54,13 +55,13 @@ def login(request):
             user = User.objects.filter(username__exact=username,password__exact=password)
 
             if user:
-                return render_to_response('index.html',{'userform':userform})
+                return render_to_response('index.html', {'userform':userform})
             else:
                 return HttpResponse('用户名或密码错误,请重新登录')
 
     else:
         userform = UserForm()
-    return render_to_response('login.html',{'userform':userform})
+    return render_to_response('login.html', {'userform':userform})
 	
 
   
