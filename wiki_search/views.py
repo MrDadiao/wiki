@@ -14,7 +14,7 @@ def index(request):
 	names = Article.objects.all()
 	return render(request, 'index.html',locals())
 
-
+@login_required
 def search(request):
 	q = request.GET.get('q')
 	error_msg=''
@@ -23,6 +23,7 @@ def search(request):
 		return render(request, 'index.html', {'error_msg': error_msg})
 	
 	post_list = Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
+	username = req.COOKIES.get('username', '')
 	return render(request, 'index.html', {'error_msg': error_msg, 'post_list': post_list})
 
 class UserForm(forms.Form):
@@ -47,6 +48,9 @@ def regist(request):
         userform = UserForm()
     return render_to_response('regist.html', {'userform':userform})
 
+
+
+
 def login(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
@@ -68,4 +72,14 @@ def login(request):
 
   
 
+@login_required
+def index(req):
+    username = req.COOKIES.get('username', '')
+    return render_to_response('index.html', {'username':username})
+
+
+def logout(req):
+    response = render_to_response('log_out.html')
+    response.delete_cookie('username')
+    return response
 
