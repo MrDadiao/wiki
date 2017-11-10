@@ -4,10 +4,12 @@ from .models import Article
 from django.db.models import Q
 from django import forms
 from .models import User
+from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
+@login_required
 def index(request):
 	names = Article.objects.all()
 	return render(request, 'index.html',locals())
@@ -39,7 +41,7 @@ def regist(request):
             User.objects.create(username=username, password=password, email=email)
             
             
-            return HttpResponse('regist success!!!')
+            return render_to_response('regist_success.html')
             
     else:
         userform = UserForm()

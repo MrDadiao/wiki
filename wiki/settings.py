@@ -71,7 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wiki.wsgi.application'
 
-
+LOGIN_URL = '/wiki/login/'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 

@@ -7,7 +7,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 	url(r'^$',views.index),
-	url(r'^search/',views.search),
-	url(r'^regist/',views.regist),
-	url(r'^login/',views.login),
+	url(r'^search/', views.search),
+	url(r'^regist/', views.regist),
+	url(r'^login/', views.login),
+	url(r'^regist_success/', views.regist)
 	]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
